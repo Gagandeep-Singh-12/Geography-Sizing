@@ -21,8 +21,8 @@ class context():
         self.CountryGrouping = CountryGrouping.CountryGrouping(self.local_config.GROUPED_DATA_PATH,self.local_config.COUNTRY_DATA_PATH,self.local_config.WEBDRIVER_PATH)
         self.Likedin_obj = linkedin_scraper.format_LinkedIn()
         self.Website_obj = Website_Class.Website()
-        self.Glassdoor_obj = Glassdoor.Scraper(self.company_name,self.company_url)
-        self.Model = Hueristic_model.Model(self.local_config.CENSUS_AGE_PATH,self.local_config.CENSUS_INCOME_PATH,self.local_config.CENSUS_POP_PATH)
+        self.Glassdoor_obj = Glassdoor.Scraper(self.company_name,self.company_url,self.local_config.WEBDRIVER_PATH)
+        self.Model = Heuristic_model.Model(self.local_config.CENSUS_AGE_PATH,self.local_config.CENSUS_INCOME_PATH,self.local_config.CENSUS_POP_PATH)
         self.client = pymongo.MongoClient(self.azure_config.COSMOS_CONNECTION)
         self.mongo_data1 = self.client.get_database(name=self.azure_config.DB_NAME).get_collection(name=self.azure_config.COLLECTION_NAME)
 
@@ -76,4 +76,11 @@ class context():
 
     def Ditribute(self):
         self.check()
-        return self.Model.Distribute(self.Data['Linkedin']['sales_data'], self.Data['Linkedin']['locations_data'], self.Data['Glassdoor'],self.Data['Website'],self.Revenue)
+        if 'error' in self.Data['Linkedin'].keys():
+            return {"Error":'company not found on linkedin'}
+        elif self.Data['Linkedin']['sales_data'] == None:
+            return {"Error":'Sales data not available'}
+
+        else:
+            Country_Dist,State_Dist = self.Model.Distribute(self.Data['Linkedin']['sales_data'], self.Data['Linkedin']['locations_data'], self.Data['Glassdoor'],self.Data['Website'],self.Revenue)
+            return {"Country":Country_Dist,"State":State_Dist}

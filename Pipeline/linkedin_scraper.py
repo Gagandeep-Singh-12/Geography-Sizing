@@ -522,7 +522,6 @@ class format_LinkedIn():
     def __init__(self):
         self.local_config = config.Local_config()
         self.country_object = CountryGrouping.CountryGrouping(self.local_config.GROUPED_DATA_PATH,self.local_config.COUNTRY_DATA_PATH,self.local_config.WEBDRIVER_PATH)
-        #self.country_object = CountryGrouping.CountryGrouping('/home/celebal/Data/grouped_countries1.pkl','/home/celebal/Data/final.csv','/home/celebal/.wdm/drivers/chromedriver/linux64/99.0.4844.51/chromedriver')
 
     def get_data_from_linkedin(self,cookie_path,company_name, company_website):
         

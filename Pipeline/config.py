@@ -7,7 +7,7 @@ class Local_config():
         self.CENSUS_AGE_PATH="/home/celebal/Data/census_data/US/clean_data/median_age.csv"
         self.CENSUS_INCOME_PATH="/home/celebal/Data/census_data/US/clean_data/median_income.csv"
         self.CENSUS_POP_PATH="/home/celebal/Data/census_data/US/clean_data/population.csv"
-        self.cookie_path = '/home/celebal/Data/cookies/cookies_celebal.pkl'
+        self.cookie_path = '/home/celebal/Data/cookies/cookies_activity.pkl'
 
 class Constant_config():
     def __init__(self):

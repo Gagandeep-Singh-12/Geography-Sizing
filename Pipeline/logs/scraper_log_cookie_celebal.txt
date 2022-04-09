@@ -20,3 +20,11 @@ linkedinurl after adding cookie -> https://www.linkedin.com/
 company : Sera Prognostics, Inc.  & company_website : https://seraprognostics.com/
 current cookie : /home/celebal/Data/cookies/cookies_celebal.pkl
 ##########AUTHWALL#############################
+linkedinurl after adding cookie -> https://www.linkedin.com/hp
+company : 23andMe Holding Co.  & company_website : https://www.23andme.com/
+current cookie : /home/celebal/Data/cookies/cookies_celebal.pkl
+##########AUTHWALL#############################
+linkedinurl after adding cookie -> https://www.linkedin.com/hp
+company : Hilan Ltd.  & company_website : https://www.hilan.co.il/
+current cookie : /home/celebal/Data/cookies/cookies_celebal.pkl
+##########AUTHWALL#############################
