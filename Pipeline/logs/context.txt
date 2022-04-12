@@ -1,0 +1,29 @@
+Message: target frame detached
+  (Session info: chrome=99.0.4844.51)
+Stacktrace:
+#0 0x55557d36b7d3 <unknown>
+#1 0x55557d0c751f <unknown>
+#2 0x55557d0b226d <unknown>
+#3 0x55557d0b1190 <unknown>
+#4 0x55557d0b170c <unknown>
+#5 0x55557d0b1664 <unknown>
+#6 0x55557d0b8c15 <unknown>
+#7 0x55557d0b2bd6 <unknown>
+#8 0x55557d0b3274 <unknown>
+#9 0x55557d0b2fd5 <unknown>
+#10 0x55557d0b24a5 <unknown>
+#11 0x55557d0b1bc4 <unknown>
+#12 0x55557d0ce321 <unknown>
+#13 0x55557d12ee64 <unknown>
+#14 0x55557d11b5a3 <unknown>
+#15 0x55557d0f0ddc <unknown>
+#16 0x55557d0f1de5 <unknown>
+#17 0x55557d39c49d <unknown>
+#18 0x55557d3b560c <unknown>
+#19 0x55557d39e205 <unknown>
+#20 0x55557d3b5ee5 <unknown>
+#21 0x55557d392070 <unknown>
+#22 0x55557d3d1488 <unknown>
+#23 0x55557d3d160c <unknown>
+#24 0x55557d3eac6d <unknown>
+#25 0x7f2e5d8cd609 <unknown>

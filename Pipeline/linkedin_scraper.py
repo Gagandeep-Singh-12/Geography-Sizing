@@ -17,9 +17,11 @@ from bs4 import BeautifulSoup
 import numpy as np
 import pandas as pd
 
+import config
+
 chrome_options = Options()  
-chrome_options.add_argument("--headless") 
-chrome_options.add_argument("--window-size=1920,1080")
+#chrome_options.add_argument("--headless") 
+#chrome_options.add_argument("--window-size=1920,1080")
 chrome_options.add_argument("--start-maximized")
 
 class LinkedIn():
@@ -41,6 +43,7 @@ class LinkedIn():
         self.authwall = False
         self.cookie_path = cookie_path
         self.linkedin_url = None
+        self.local_config = config.Local_config()
         #getting driver
         #if not driver_path:
         #    raise ValueError("Chrome driver Error!!!")
@@ -51,7 +54,7 @@ class LinkedIn():
         #s = Service(self.driver_path)
 
         #Intializing chrome Driver
-        self.driver = webdriver.Chrome('/home/celebal/.wdm/drivers/chromedriver/linux64/99.0.4844.51/chromedriver',options=chrome_options)
+        self.driver = webdriver.Chrome(self.local_config.WEBDRIVER_PATH,options=chrome_options)
         self.driver.maximize_window()
         #self.driver.implicitly_wait(5)
         #self.driver.maximize_window()
@@ -64,17 +67,17 @@ class LinkedIn():
         file.write("company : {}  & company_website : {}".format(self.company_name, self.company_website))
         file.write("\n")
         self.load_cookies()
-        time.sleep(random.randint(4,10))
+        time.sleep(random.randint(15,25))
         #self.login()
         results = False
         linkedin_link = self.search_company_webiste()
-        time.sleep(random.randint(4,10))
+        time.sleep(random.randint(15,25))
         if linkedin_link:
             self.write_content()
             results = self.scraper(linkedin_link)
         else:
             linkedin_link = self.search_google()
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             #website has been verified and the correspoding content has been written
             if linkedin_link:
                 results = self.scraper(linkedin_link)
@@ -137,14 +140,14 @@ class LinkedIn():
             self.wait_for_element("//ul[@class='org-page-navigation__items ']/li/a")
             time.sleep(10)
             ##Random 
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             ##
             org_page_navigation_items = self.driver.find_elements(By.XPATH, "//ul[@class='org-page-navigation__items ']/li/a")
             #locate hyperlinks to required Section
             sections = [my_elem.get_attribute('href') for my_elem in org_page_navigation_items]
             link = [sec for sec in sections if sec.split('/')[-2] == section][0]
             ##Random 
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             ##
             driver.get(link)
             ##vhecking for wether linkedin has restricted your account
@@ -295,11 +298,11 @@ class LinkedIn():
             self.select_section(self.driver, 'people')
 
             ##Random 
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             ##
             #click next button
             self.wait_for_element('//button[@aria-label="Next"]').click()
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             self.wait_for_element('//div[@class="insight-container"]//h4[text()="What they do"]')
             
             #caculation for applying sales filter
@@ -322,17 +325,17 @@ class LinkedIn():
                 
             sales_filter = '//*[@id="{}"]/div/button[{}]'.format(id,c)
             ##Random 
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             ##
             #click show more if present
             try:
-                time.sleep(random.randint(4,10))
+                time.sleep(random.randint(15,25))
                 self.wait_for_element('//*[@id="main"]/div[2]/div/div[1]/div[2]/button').click()
             except:
                 pass
             
             try:
-                time.sleep(random.randint(4,10))
+                time.sleep(random.randint(15,25))
                 WebDriverWait(self.driver, 25).until(
                     EC.element_to_be_clickable((By.XPATH,sales_filter))
                 ).click()
@@ -344,16 +347,16 @@ class LinkedIn():
                 #print('Time out at sales filter')
                 #self.error_dict['get_sales_data1']= 'Time out at sales filter'
                 #print(e)
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             self.wait_for_element('//div[@class="artdeco-card p4 m2 org-people-bar-graph-module__geo-region"]//button/div/strong')
             #get employee counts
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             emp_counts =self.driver.find_elements(By.XPATH, '//div[@class="artdeco-card p4 m2 org-people-bar-graph-module__geo-region"]//button/div/strong')
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             emp_counts = [elem.text for elem in emp_counts]  
             #get country names
             country_names = self.driver.find_elements(By.XPATH, '//div[@class="artdeco-card p4 m2 org-people-bar-graph-module__geo-region"]//button/div/span')
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             country_names = [country.text for country in country_names]
             
             sales_dic = {"country":country_names, "sales_count":emp_counts}
@@ -370,14 +373,14 @@ class LinkedIn():
     def search_google(self):
         try:
             google_search_url = "https://www.google.com/search?q="+self.company_name+"+linkedin"
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             self.driver.get(google_search_url)
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             self.wait_for_element("//div[@id='search']")
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             linkedin_URLS = [my_elem.get_attribute("href") for my_elem in self.driver.find_elements(By.XPATH,"//div[@class='yuRUbf']/a")]
             #ensuring all links contain linkedin
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             linkedin_URLS = [link for link in linkedin_URLS if link.find('linkedin')!= -1 and link.find('company')!=-1]
             #print(linkedin_URLS)
             
@@ -386,21 +389,21 @@ class LinkedIn():
                 #print('YYYYY')
                 m = re.search("(https)?(http)?(://)?(www.)?([A-Za-z_0-9-]+).*", self.company_website)
                 search = m.group(5)
-                time.sleep(random.randint(4,10))
+                time.sleep(random.randint(15,25))
                 google_search_url = "https://www.google.com/search?q="+search+"+linkedin"
-                time.sleep(random.randint(4,10))
+                time.sleep(random.randint(15,25))
                 self.driver.get(google_search_url)
-                time.sleep(random.randint(4,10))
+                time.sleep(random.randint(15,25))
                 self.wait_for_element("//div[@id='search']")
                 linkedin_URLS = [my_elem.get_attribute("href") for my_elem in self.driver.find_elements(By.XPATH,"//div[@class='yuRUbf']/a")]
                 #ensuring all links contain linkedin
-                time.sleep(random.randint(4,10))
+                time.sleep(random.randint(15,25))
                 linkedin_URLS = [link for link in linkedin_URLS if link.find('linkedin')!= -1 and link.find('company')!=-1]
                 #print(linkedin_URLS)
                             
             #verification
             for link_suggestion in linkedin_URLS:
-                time.sleep(random.randint(4,10))
+                time.sleep(random.randint(15,25))
                 if self.verify_website(link_suggestion):
                     return self.driver.current_url
             return False
@@ -415,10 +418,10 @@ class LinkedIn():
             if ~(link.startswith('https://www.linkedin.com/company')):
                 link = "https://www.linkedin.com/company"+link.split("company")[-1] 
                 print(link)
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             self.driver.get(link)
             ##Random 
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             ##
             self.select_section(self.driver, 'about')
             self.wait_for_element('//section[@class="artdeco-card p5 mb4"]')
@@ -442,11 +445,11 @@ class LinkedIn():
                     #eg.=>company_website=https://4sight.cloud/about & linkedin = http://www.4sightholdings.com
                     else:
                         self.driver2 = webdriver.Chrome('/home/celebal/.wdm/drivers/chromedriver/linux64/99.0.4844.51/chromedriver',options=chrome_options)
-                        time.sleep(random.randint(4,10))
+                        time.sleep(random.randint(15,25))
                         self.driver2.get(website)
-                        time.sleep(random.randint(4,10))
+                        time.sleep(random.randint(15,25))
                         website = self.driver2.current_url
-                        time.sleep(random.randint(4,10))
+                        time.sleep(random.randint(15,25))
                         self.driver2.close()
                         web1 = self.regex(website)
                         web2 = self.regex(self.company_website)
@@ -464,28 +467,28 @@ class LinkedIn():
     def search_company_webiste(self):
         try:
             self.driver.get(self.company_website)
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             self.wait_for_element('//a')
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             links = [elem.get_attribute('href') for elem in self.driver.find_elements(By.XPATH, '//a')]
             
             #checking if link is in area tag (eg. 'https://www.01com.com/')
             try:
                 area_links = self.driver.find_elements(By.XPATH, '//map/area[@href]')
-                time.sleep(random.randint(4,10))
+                time.sleep(random.randint(15,25))
                 links.extend([elem.get_attribute('href') for elem in area_links])
-                time.sleep(random.randint(4,10))
+                time.sleep(random.randint(15,25))
             except:
                 pass
             
             #checking for linkedin link
             for link in links:
                 if link.find('https://www.linkedin.com/company') != -1:
-                    time.sleep(random.randint(4,10))
+                    time.sleep(random.randint(15,25))
                     self.driver.get(link)
-                    time.sleep(random.randint(4,10))
+                    time.sleep(random.randint(15,25))
                     self.select_section(self.driver, 'about')
-                    time.sleep(random.randint(4,10))
+                    time.sleep(random.randint(15,25))
                     return self.driver.current_url
             return False
             
@@ -501,7 +504,7 @@ class LinkedIn():
             self.locations_data = locations
             self.headquarter = headquarter_loc
             ##Random 
-            time.sleep(random.randint(4,10))
+            time.sleep(random.randint(15,25))
             ##
             sales_dic = self.get_sales_data() 
             self.sales_data = sales_dic
@@ -515,7 +518,6 @@ class LinkedIn():
             print('error inside scraper')
             self.error_dict['scraper_error'] = True
 
-import config
 import CountryGrouping
 class format_LinkedIn():
 

@@ -30,8 +30,8 @@ class Scraper():
         self.driverpath = driverpath
 
         # Starting Display for 
-        self.display = Display(visible=0, size=(1920, 1080))  
-        self.display.start()
+        #self.display = Display(visible=0, size=(1920, 1080))  
+        #self.display.start()
 
         #Intializing chrome Driver
         self.driver = webdriver.Chrome(self.driverpath,options=self.chrome_options)
@@ -133,8 +133,14 @@ class Scraper():
             search.send_keys(Keys.BACK_SPACE)
             
         #Hit Search button
-        search_button = self.wait_for_element('//*[@id="scBar"]/div/button')
-        search_button.click()
+        search_button = self.wait_for_element('//*[@id="scBar"]/div/button',45)
+        try:
+            search_button.click()
+        except Exception as e:
+            print(self.driver.current_url)
+            file = open("logs/glassdoor_log.txt","a")
+            file.write("\n"+self.company_name+", "+str(e)+"," +self.driver.current_url,"  search button  ")
+            file.close()  
 
     def get_Company_website(self):
         #if "Overview" not in self.driver.current_url:
@@ -153,13 +159,14 @@ class Scraper():
     def Get_loc(self):
         try:
             self.wait_for_element("//a[@class = 'moreBar']")
+            self.driver.find_element(By.XPATH,"//a[@class = 'moreBar']").click()
         except TimeoutException:
             self.Status = "Locations Not Found"
             file = open("logs/glassdoor_log.txt","a")
             file.write("\n"+self.company_name+", "+"Loc not found"+"," +self.driver.current_url)
             file.close()
             return -1
-        self.driver.find_element(By.XPATH,"//a[@class = 'moreBar']").click()
+
         #driver.current_url
         try:
             self.wait_for_element("//p[@class='mb-0 mt-0 d-flex align-items-center']//a")
@@ -175,14 +182,14 @@ class Scraper():
     
     def Scrape(self):
         self.login()
-        #try:    
-        self.Search_Company()
-        """except Exception as e:
+        try:    
+            self.Search_Company()
+        except Exception as e:
             #print(self.driver.current_url)
             file = open("logs/glassdoor_log.txt","a")
-            file.write(self.company_name+", "+str(e)+"," +self.driver.current_url)
+            file.write("\n"+self.company_name+", "+str(e)+"," +self.driver.current_url+", Seacrch company ")
             file.close()
-            return -1"""
+            return -1
         
         if "Overview" not in self.driver.current_url:
             try:
@@ -194,7 +201,7 @@ class Scraper():
                 file = open("logs/glassdoor_log.txt","a")
                 file.write("\n"+self.company_name+", "+"Comapny Not found")
                 file.close()
-                self.display.stop()
+                #self.display.stop()
                 return -1
             href = self.driver.find_elements(By.XPATH,'//div[@class = "single-company-result module "]//div[@class="col-9 pr-0"]//h2//a')
             comapny_web = self.driver.find_elements(By.XPATH,'//div[@class = "single-company-result module "]//span//a')
@@ -217,4 +224,4 @@ class Scraper():
                 self.Status = "Not Verified"
         
         self.driver.quit()
-        self.display.stop()
+        #self.display.stop()

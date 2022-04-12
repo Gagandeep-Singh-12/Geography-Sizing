@@ -8,6 +8,7 @@ app = Flask(__name__)
 def home():
      return "Flask"
 
+
 @app.route('/api', methods=['GET', 'POST'])
 def testpost():
      input_json = request.get_json(force=True)
@@ -16,6 +17,15 @@ def testpost():
      dictToReturn = obj.Ditribute()
      print(dictToReturn)
      return jsonify(dictToReturn)
+
+@app.route('/leaf_sizing', methods=['POST'])
+def get_revenue():
+     input_json = request.get_json(force=True)
+     print(input_json)
+     if input_json['revenue'] == -1:
+          revenue = -1
+     else:
+          revenue = input_json['revenue']
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=8080 ,debug=True)

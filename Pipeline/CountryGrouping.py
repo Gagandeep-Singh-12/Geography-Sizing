@@ -57,7 +57,7 @@ class CountryGrouping():
 
     def iso_browser(self,linkedin_location):
         display = Display(visible=0, size=(800, 800))  
-        display.start()
+        #display.start()
         chrome_options = Options()
         # maximized window
         chrome_options.add_argument("--start-maximized")
@@ -82,7 +82,7 @@ class CountryGrouping():
         country = driver.find_element(By.XPATH,"//button[@class='v-nativebutton']").text
         code = driver.find_element(By.XPATH,"//td[@class='v-grid-cell']").text.lower()
         driver.quit()
-        display.stop()
+        #display.stop()
         return country,code
     
     def get_country(self,linkedin_loc):
