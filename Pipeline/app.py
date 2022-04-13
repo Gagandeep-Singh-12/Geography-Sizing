@@ -57,6 +57,7 @@ def testpost():
           dictToReturn = obj.Ditribute()
           print(dictToReturn)
           display.stop()
+          json.dump({'revenue' : False}, open('util_files/revenue.json','w'))
           return jsonify(dictToReturn)
      else:
           return jsonify({"Error": "Invalid Schema"})
