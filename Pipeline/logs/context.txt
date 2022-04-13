@@ -27,3 +27,22 @@ Stacktrace:
 #23 0x55557d3d160c <unknown>
 #24 0x55557d3eac6d <unknown>
 #25 0x7f2e5d8cd609 <unknown>
+
+Time taken for BioLASCO Taiwan Co., Ltd. company = 0.07013240257898966 min
+Time taken for BioLight Life Sciences Ltd. company = 0.062464205423990886 min
+Time taken for Biomimix, Inc. company = 0.07346700429916382 min
+Time taken for Bionano Genomics, Inc. company = 0.05796705484390259 min
+Time taken for Bioqual, Inc. company = 0.05839236577351888 min
+Time taken for BioStem Technologies, Inc. company = 0.06427570978800455 min
+Time taken for Biotage AB company = 0.06842257181803385 min
+Time taken for Biotricity, Inc. company = 0.05820737282435099 min
+Time taken for Birlasoft Limited company = 0.053146648406982425 min
+Time taken for Bit Digital, Inc. company = 0.0731376846631368 min
+Time taken for BIT Mining Limited company = 11.107227214177449 min
+Time taken for BitFrontier Capital Holdings, Inc. company = 8.263588011264801 min
+Time taken for Bitnine Co, Ltd. company = 4.701409256458282 min
+Time taken for Bittium Oyj company = 11.515951124827067 min
+Time taken for Bittnet Systems SA company = 9.764864182472229 min
+Time taken for Black Box Limited company = 18.48798317114512 min
+Time taken for Black Knight, Inc. company = 11.855530107021332 min
+Time taken for Blackbaud, Inc. company = 7.880058495203654 min

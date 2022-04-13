@@ -102,8 +102,13 @@ class LinkedIn():
         self.driver.get('https://www.linkedin.com/')
         self.driver.add_cookie(cookie)
         self.driver.refresh() 
-        self.linkedin_url=self.driver.current_url 
-        print(self.linkedin_url)
+        try:
+            self.linkedin_url=self.driver.current_url 
+            print(self.linkedin_url)
+        except TimeoutException:
+            file = open("logs/scraper_log_cookie_celebal.txt", "a")
+            file.write("TimeOutException getting current url\n")
+            
         file = open("logs/scraper_log_cookie_celebal.txt", "a")
         file.write("linkedinurl after adding cookie -> {}\n".format(self.linkedin_url))
     
@@ -131,12 +136,18 @@ class LinkedIn():
             
     def select_section(self, driver, section):
         try:
+            if driver.linkedin_url == None:
+                self.linkedin_url = driver.current_url
+                file = open("logs/scraper_log_cookie_celebal.txt", "a")
+                file.write("linkedin url in select section -> {}\n".format(self.linkedin_url))
+
             if driver.current_url.find('authwall?') != -1:
                 self.authwall = True
                 file = open("logs/scraper_log_cookie_celebal.txt", "a")
                 file.wrie("authwall = True\n")
                 self.close_drivers()
-
+            
+            
             self.wait_for_element("//ul[@class='org-page-navigation__items ']/li/a")
             time.sleep(10)
             ##Random 
