@@ -8,6 +8,9 @@ local_config = config.Local_config()
 client = pymongo.MongoClient(azure_config.COSMOS_CONNECTION)
 mongo_data1 = client.get_database(name=azure_config.DB_NAME).get_collection(name=azure_config.COLLECTION_NAME)
 
+file =  open('util_files/revenue.json','r') 
+revenue_js = json.load(file)
+
 def get_schema():
     """This function loads the given schema available"""
     with open('util_files/input_schema.json', 'r') as file:
@@ -32,13 +35,13 @@ def check_cosmos(input):
             return False
 
 def check_revenue():
-    with open('util_files/revenue.json','r') as file:
-        revenue_js = json.load(file)
+    #with open('util_files/revenue.json','r') as file:
+    #    revenue_js = json.load(file)
         #if there is  revenue
-        if revenue_js:
-            return revenue_js['revenue']
-        else:
-            return revenue_js['revenue']#false
+    if revenue_js['status']:
+        return revenue_js['revenue']
+    else:
+        return revenue_js['status']#false
 
 
 

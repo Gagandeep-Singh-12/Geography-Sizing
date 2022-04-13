@@ -1,8 +1,5 @@
-from copyreg import pickle
-from tracemalloc import start
 import utils
-from ipaddress import ip_address
-from flask import Flask, redirect, request, jsonify, url_for
+from flask import Flask, request, jsonify
 import requests
 import context
 from utils import validate_json
@@ -37,19 +34,18 @@ def testpost():
           if utils.check_cosmos(input_json):
                
           '''
+          #time.sleep(30)
           start = time.time()
           #untill there is revenue
           while utils.check_revenue() == False:
                end = time.time()
                tt = (end - start)/60
-               if  tt > 4:
+               if  tt > 3:
                     break
                else:
                     pass
-          #time.sleep(1*60)
-          #revenue = request.args.get("revenue")
-          #revenue = pickle.load(open('outputs/revenue.pkl', 'rb'))
           revenue = utils.check_revenue()
+          #if revenue == False:
           print("Inside api revenue :  ",revenue)
           #default value for revenue is taken to be $100, this would be provided by model from anjali ma'am
           #obj = context.context(input_json["Comapny_name"],input_json["Company_URL"],100)
@@ -57,7 +53,7 @@ def testpost():
           dictToReturn = obj.Ditribute()
           print(dictToReturn)
           display.stop()
-          json.dump({'revenue' : False}, open('util_files/revenue.json','w'))
+          json.dump({'revenue' : False, 'status':False}, open('util_files/revenue.json','w'))
           return jsonify(dictToReturn)
      else:
           return jsonify({"Error": "Invalid Schema"})
@@ -67,14 +63,13 @@ def get_revenue():
      input_json = request.get_json(force=True)
      print(input_json)
      if input_json['totalRevenue'] == None:
-          revenue = False
+          revenue, status = False , False
      else:
+          status = True
           revenue = input_json['totalRevenue']
      print("Inside get_revenue  :  {}".format(revenue))
-     json.dump({'revenue' : revenue}, open('util_files/revenue.json','w'))
-     #pickle.dump(revenue, open('outputs/revenue.pkl', 'wb'))
+     json.dump({'revenue' : revenue, "status" : status}, open('util_files/revenue.json','w'))
      return jsonify(input_json)
-     #return redirect(url_for("api"))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=8080 ,debug=True)
