@@ -8,6 +8,8 @@ class Local_config():
         self.CENSUS_INCOME_PATH="/home/celebal/Data/census_data/US/clean_data/median_income.csv"
         self.CENSUS_POP_PATH="/home/celebal/Data/census_data/US/clean_data/population.csv"
         self.cookie_path = '/home/celebal/Data/cookies/cookies_activity.pkl'
+        self.revenue_file_path = '/home/celebal/Pipeline/util_files/revenue.json'
+        #self.revenue_file_pointer = open(self.revenue_file_path, 'r+')
 
 class Constant_config():
     def __init__(self):

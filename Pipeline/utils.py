@@ -10,6 +10,7 @@ mongo_data1 = client.get_database(name=azure_config.DB_NAME).get_collection(name
 
 file =  open('util_files/revenue.json','r') 
 revenue_js = json.load(file)
+#revenue_js = json.load(local_config.revenue_file_pointer)
 
 def get_schema():
     """This function loads the given schema available"""
@@ -42,6 +43,8 @@ def check_revenue():
         return revenue_js['revenue']
     else:
         return revenue_js['status']#false
+def get_error():
+    return revenue_js['error']
 
 
 

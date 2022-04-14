@@ -11,7 +11,7 @@ display = Display(visible=0, size=(1920, 1080))
 display.start()
 
 #try:
-for i in range(255, len(df)):
+for i in range(200, len(df)):
     start = time.time()
     company = df.iloc[i, 3]
     website = df.iloc[i, 0]
