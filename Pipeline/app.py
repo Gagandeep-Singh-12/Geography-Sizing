@@ -1,4 +1,4 @@
-from distutils.log import error
+from tracemalloc import start
 import utils
 from flask import Flask, request, jsonify
 import requests
@@ -16,6 +16,7 @@ def home():
 
 #gloabl variables
 url1 = 'http://52.146.41.91:2020/geography_revenue'
+global revenue, status, error
 revenue = None
 status = False
 error = None
@@ -24,58 +25,35 @@ def testpost():
      global status, revenue, error
      print('Inside api : 1 -> status : ',status)
      input_json = request.get_json(force=True)
+     print("Inside Api ",input_json)
      if validate_json(input_json):
           from pyvirtualdisplay import Display
           display = Display(visible=0, size=(1920, 1080))  
           display.start()
-          #context.context()
-          #hit url for revenue
           response = requests.get(url1,
-
                         json= input_json
-
                         )
           print("inside api : ",response)
           print("inside api : ",response.text)
-          '''
-          
-          if utils.check_cosmos(input_json):
-               
-          
-          time.sleep(30)
           start = time.time()
-          #untill there is revenue
-          while utils.check_revenue() == False:
-               end = time.time()
-               tt = (end - start)/60
-               if  tt > 3:
-                    break
-               else:
-                    pass
-          revenue = utils.check_revenue()
-          #if revenue == False:
-          error = utils.get_error()
-          '''
-          print("Inside api revenue :  ",revenue)
           while status == False:
                pass
-          if revenue == None:
-               status = False
+          end = time.time()
+          print("Time taken for status to become True : ",(end-start), "seconds")
+          print("Inside api revenue :  ",revenue)
+          print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+          if error != None:
+               status, error =False, None
+               return jsonify({"Error": "invalid company website"})
+          elif revenue == None:
+               status, revenue = False, None
                return jsonify({"Error": "Revenue Not Found"})
-          elif error != None:
-               status =False
-               return jsonify({"Error": error})
           #default value for revenue is taken to be $100, this would be provided by model from anjali ma'am
-          #obj = context.context(input_json["Comapny_name"],input_json["Company_URL"],100)
           obj = context.context(input_json["company_name"],input_json["company_website"],revenue)
           dictToReturn = obj.Ditribute()
-          print('HHHHHHH')
-          print(dictToReturn)
+          #print(dictToReturn)
           display.stop()
-          #json.dump({'revenue' : False, 'status':False, "error":None}, open('util_files/revenue.json','w'))
-          #print("Hi")
-          #json.dump({'revenue' : False, 'status':False,"error":None}, local_config.revenue_file_pointer)
-          status = False
+          status, revenue = False,None
           return jsonify(dictToReturn)
      else:
           return jsonify({"Error": "Invalid Schema"})
@@ -94,8 +72,7 @@ def get_revenue():
           else:
                revenue, status = input_json["revenue"], True
      print("Inside get_revenue  :  {}".format(revenue))
-     #json.dump({'revenue' : revenue, "status" : status, "error":error}, open('util_files/revenue.json','w'))
-     #json.dump({'revenue' : revenue, "status" : status, "error":error}, local_config.revenue_file_pointer)
+     print('#############################################################')
      return jsonify(input_json)
 
 if __name__ == '__main__':
