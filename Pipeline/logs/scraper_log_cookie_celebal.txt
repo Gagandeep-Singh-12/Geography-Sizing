@@ -1620,3 +1620,6 @@ current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
 linkedinurl after adding cookie -> https://www.linkedin.com/feed/
 company : Dagang NeXchange Berhad  & company_website : http://www.dnex.com.my
 current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+company : HTG Molecular Diagnostics, Inc.  & company_website : https://www.htgmolecular.com/
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl

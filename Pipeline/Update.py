@@ -9,11 +9,12 @@ mongo_data1 = client.get_database(name=azure_config.DB_NAME).get_collection(name
 file = open('logs/chronejob.txt','w')
 cursor = mongo_data1.find({})
 for document in cursor:
-    scrape = context.context(document["Compnay_Name"],document["Compnay_url"])
+    #print(document)
+    scrape = context.context(document["_id"],document["Compnay_url"],100)
     record = scrape.Scraper()
     query = {"_id":document["_id"]}
     mongo_data1.update_one(query,record)
-    file.write("Updated : {} -> {}\n".format(document["Compnay_Name"],document["Compnay_url"]))
+    file.write("Updated : {} -> {}\n".format(document["_id"],document["Compnay_url"]))
 file.close()
 
 
