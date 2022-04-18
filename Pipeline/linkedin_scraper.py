@@ -539,6 +539,9 @@ class format_LinkedIn():
         self.LinkedIn_password = 'mypassword123'
   
     def update_cookies(self):
+        from pyvirtualdisplay import Display
+        display = Display(visible=0, size=(1920, 1080))  
+        display.start()
         driver = webdriver.Chrome()
         #login
         driver.get('https://www.linkedin.com/login')
@@ -550,8 +553,12 @@ class format_LinkedIn():
         pass_word.send_keys(self.LinkedIn_password)
         time.sleep(8)
         pass_word.submit()
+        with open('logs/update_cookie.txt','a') as f:
+            f.write('Password & Id submitted\n')
         #save cookies
         print("saving cookie")
+        with open('logs/update_cookie.txt','a') as f:
+            f.write('Saving cookies\n')
         time.sleep(10)
         cookies=driver.get_cookies()
         print(cookies)
@@ -565,10 +572,12 @@ class format_LinkedIn():
                 }
                 break
 
-        
-        pickle.dump(x , open("cookies/cookies_f.pkl","wb"))
-        print('cookies saved')
+        '/home/celebal/Data/cookies'
+        pickle.dump(x , open("/home/celebal/Data/cookies/updated_cookies_activity.pkl","wb"))
+        with open('logs/update_cookie.txt','a') as f:
+            f.write('Cookies saved\n')
         driver.close() 
+        display.stop()
 
 
     def get_data_from_linkedin(self,cookie_path,company_name, company_website):
@@ -580,9 +589,16 @@ class format_LinkedIn():
         output_ = obj.get_results()
 
         if self.linkedin_url.main_driver.current_url.startswith("https://www.linkedin.com/signup"):
-            self.update_cookies()
-            obj=LinkedIn(cookie_path,company_name, company_website) 
-            output_ = obj.get_results()
+            file = open('logs/update_cookie.txt','a')
+            file.write('company_name : {}  &  company_url {}\n'.format(company_name, company_website))
+            try:
+                self.update_cookies()
+                file.write('cookies updated\n')
+                obj=LinkedIn(cookie_path,company_name, company_website) 
+                output_ = obj.get_results()
+            except Exception as e:
+                file.write('Exception occured while updating cookie i.e. {}'.format(e))
+            file.close()
         
         if obj.authwall:
             print('##########AUTHWALL#############################')
