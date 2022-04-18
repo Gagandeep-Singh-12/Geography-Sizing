@@ -535,16 +535,54 @@ class format_LinkedIn():
     def __init__(self):
         self.local_config = config.Local_config()
         self.country_object = CountryGrouping.CountryGrouping(self.local_config.GROUPED_DATA_PATH,self.local_config.COUNTRY_DATA_PATH,self.local_config.WEBDRIVER_PATH)
+        self.LinkedIn_email = 'johnsinha183@gmail.com'
+        self.LinkedIn_password = 'mypassword123'
+  
+    def update_cookies(self):
+        driver = webdriver.Chrome()
+        #login
+        driver.get('https://www.linkedin.com/login')
+        time.sleep(8)
+        username = driver.find_element(By.ID, 'username')
+        username.send_keys(self.LinkedIn_email)
+        time.sleep(8)
+        pass_word= driver.find_element(By.ID, 'password')
+        pass_word.send_keys(self.LinkedIn_password)
+        time.sleep(8)
+        pass_word.submit()
+        #save cookies
+        print("saving cookie")
+        time.sleep(10)
+        cookies=driver.get_cookies()
+        print(cookies)
+        for cookie in cookies:
+            if(cookie['name']=='li_at'):
+                #cookie['domain']='www.linkedin.com'
+                x={
+                'name': 'li_at',
+                'value': cookie['value'],
+                'domain': 'www.linkedin.com'
+                }
+                break
+
+        
+        pickle.dump(x , open("cookies/cookies_f.pkl","wb"))
+        print('cookies saved')
+        driver.close() 
+
 
     def get_data_from_linkedin(self,cookie_path,company_name, company_website):
         
-        #cookie_path = "cookies/{}".format('cookies_celebal.pkl')
         file = open("logs/scraper_log_cookie_celebal.txt", "a")
         file.write('current cookie : {}\n'.format(cookie_path))
         
         obj=LinkedIn(cookie_path,company_name, company_website) 
         output_ = obj.get_results()
-        #print(output_)
+
+        if self.linkedin_url.main_driver.current_url.startswith("https://www.linkedin.com/signup"):
+            self.update_cookies()
+            obj=LinkedIn(cookie_path,company_name, company_website) 
+            output_ = obj.get_results()
         
         if obj.authwall:
             print('##########AUTHWALL#############################')
