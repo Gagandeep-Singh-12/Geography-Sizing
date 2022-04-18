@@ -542,7 +542,7 @@ class format_LinkedIn():
         from pyvirtualdisplay import Display
         display = Display(visible=0, size=(1920, 1080))  
         display.start()
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(self.local_config.WEBDRIVER_PATH,options=chrome_options)
         #login
         driver.get('https://www.linkedin.com/login')
         time.sleep(8)
