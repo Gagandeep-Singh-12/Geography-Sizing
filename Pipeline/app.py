@@ -1,5 +1,4 @@
 from tracemalloc import start
-import utils
 from flask import Flask, request, jsonify
 import requests
 import context
