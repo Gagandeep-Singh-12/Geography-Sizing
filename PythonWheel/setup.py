@@ -6,7 +6,7 @@ setuptools.setup(
     author='Celebal',
     author_email='gagandeep.singh1@celebaltech.com',
     description='Testing installation of Package',
-    url='https://github.com/mike-huls/toolbox',
+    url='https://github.com/Gagandeep-Singh-12/Geography-Sizing/tree/master/PythonWheel',
     license='MIT',
     packages=['PythonWheel']
     #,install_requires=['requests'],
