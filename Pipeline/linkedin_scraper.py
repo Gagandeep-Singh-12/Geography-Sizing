@@ -136,10 +136,15 @@ class LinkedIn():
             
     def select_section(self, driver, section):
         try:
+            '''
             if driver.linkedin_url == None:
                 self.linkedin_url = driver.current_url
                 file = open("logs/scraper_log_cookie_celebal.txt", "a")
                 file.write("linkedin url in select section -> {}\n".format(self.linkedin_url))
+            
+           
+            ''' 
+           
 
             if driver.current_url.find('authwall?') != -1:
                 self.authwall = True
@@ -149,18 +154,19 @@ class LinkedIn():
             
             
             self.wait_for_element("//ul[@class='org-page-navigation__items ']/li/a")
+            #print('ISS ')
             time.sleep(10)
-            ##Random 
             time.sleep(random.randint(15,25))
-            ##
             org_page_navigation_items = self.driver.find_elements(By.XPATH, "//ul[@class='org-page-navigation__items ']/li/a")
             #locate hyperlinks to required Section
             sections = [my_elem.get_attribute('href') for my_elem in org_page_navigation_items]
+            #print('Inside select section : ',sections)
             link = [sec for sec in sections if sec.split('/')[-2] == section][0]
             ##Random 
             time.sleep(random.randint(15,25))
             ##
             driver.get(link)
+            #print('ISS 2')
             ##vhecking for wether linkedin has restricted your account
             if section == 'people':
                 checking = self.check_for_restriction()
@@ -455,7 +461,7 @@ class LinkedIn():
                     #but if we visit it, there is a match 
                     #eg.=>company_website=https://4sight.cloud/about & linkedin = http://www.4sightholdings.com
                     else:
-                        self.driver2 = webdriver.Chrome('/home/celebal/.wdm/drivers/chromedriver/linux64/99.0.4844.51/chromedriver',options=chrome_options)
+                        self.driver2 = self.driver = webdriver.Chrome(self.local_config.WEBDRIVER_PATH,options=chrome_options)
                         time.sleep(random.randint(15,25))
                         self.driver2.get(website)
                         time.sleep(random.randint(15,25))
@@ -571,9 +577,8 @@ class format_LinkedIn():
                 'domain': 'www.linkedin.com'
                 }
                 break
-
-        '/home/celebal/Data/cookies'
-        pickle.dump(x , open("/home/celebal/Data/cookies/updated_cookies_activity.pkl","wb"))
+        file = '{}/updated_cookies_activity.pkl'.format(self.local_config.cookie_folder)   
+        pickle.dump(x , open(file,"wb"))
         with open('logs/update_cookie.txt','a') as f:
             f.write('Cookies saved\n')
         driver.close() 
@@ -588,7 +593,7 @@ class format_LinkedIn():
         obj=LinkedIn(cookie_path,company_name, company_website) 
         output_ = obj.get_results()
 
-        if self.linkedin_url.main_driver.current_url.startswith("https://www.linkedin.com/signup"):
+        if obj.linkedin_url.startswith("https://www.linkedin.com/signup"):
             file = open('logs/update_cookie.txt','a')
             file.write('company_name : {}  &  company_url {}\n'.format(company_name, company_website))
             try:

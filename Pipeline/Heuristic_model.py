@@ -1,10 +1,13 @@
 import pandas as pd
 import re
+import pymongo
 class Model():
-    def __init__(self,Census_age,Census_income,Census_pop):
-        self.Census_age_path = Census_age
-        self.Census_income_path =Census_income
-        self.Census_pop_path = Census_pop
+    def __init__(self,cosmos_conn,db_name,census_coll):
+        self.Census_coll= census_coll
+        self.cosmos_conn= cosmos_conn
+        self.db_name= db_name
+        self.client = pymongo.MongoClient(self.cosmos_conn)
+        self.mongo_data = self.client.get_database(name="geography_sizing").get_collection(name='census_US')
 
     def Country(self,sales,countries,Revenue):
         uni_countries = list(set(countries))
@@ -35,14 +38,12 @@ class Model():
             State[uni_state[0]] = rev
             return State
         for s in uni_state:
-            age_df = pd.read_csv(self.Census_age_path)
-            income_df = pd.read_csv(self.Census_income_path)
-            pop_df = pd.read_csv(self.Census_pop_path)
+            rec = self.mongo_data.find_one({"_id":s.upper()})
 
-            income = income_df[income_df["state_code"] == s.upper()]["median_income"].values[0]
-            Age = age_df[age_df["state_code"] == s.upper()]["median_age"].values[0]
-            pop = pop_df[pop_df["state_code"] == "CA"]["population"].values[0]
-            Value = income*2.5 + Age*0.1 + pop*0.1
+            income = rec["median_age"]
+            Age = rec["median_income"]
+            pop = rec["population"]
+            Value = income*.25 + Age*0.1 + pop*0.1/(income+Age+pop)
             State[s] = Value
             tot+=Value
         for k in State.keys():

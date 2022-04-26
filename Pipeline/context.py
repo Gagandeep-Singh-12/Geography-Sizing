@@ -2,7 +2,6 @@ import Glassdoor
 import Website_Class
 import pymongo
 import pandas as pd
-import os
 import CountryGrouping
 import Heuristic_model
 import us
@@ -10,8 +9,9 @@ import linkedin_scraper
 import config
 
 class context():
-    def __init__(self,company_name,company_url,Revenue):
+    def __init__(self,Id,company_name,company_url,Revenue):
         self.Revenue = Revenue
+        self.ID  = Id
         self.company_name=company_name
         self.company_url = company_url
         self.azure_config = config.Azure_config()
@@ -22,7 +22,7 @@ class context():
         self.Likedin_obj = linkedin_scraper.format_LinkedIn()
         self.Website_obj = Website_Class.Website()
         self.Glassdoor_obj = Glassdoor.Scraper(self.company_name,self.company_url,self.local_config.WEBDRIVER_PATH)
-        self.Model = Heuristic_model.Model(self.local_config.CENSUS_AGE_PATH,self.local_config.CENSUS_INCOME_PATH,self.local_config.CENSUS_POP_PATH)
+        self.Model = Heuristic_model.Model(self.azure_config.COSMOS_CONNECTION,self.azure_config.DB_NAME,self.azure_config.COLLECTION_NAME_CENSUS)
         self.client = pymongo.MongoClient(self.azure_config.COSMOS_CONNECTION)
         self.mongo_data1 = self.client.get_database(name=self.azure_config.DB_NAME).get_collection(name=self.azure_config.COLLECTION_NAME)
 
@@ -36,7 +36,7 @@ class context():
         #mongo_data1 = client.get_database(name=self.azure_config.DB_NAME).get_collection(name=self.azure_config.COLLECTION_NAME)
         cursor = self.mongo_data1.find({})
         for document in cursor:
-            if document['_id'] == self.company_name:
+            if document['_id'] == self.ID:
                 self.Data = document
         #mongo_data1.close()
         if not self.Data:
@@ -65,8 +65,8 @@ class context():
 
     def Scraper(self):
         Record = {}
-        #Record["_id"] = Id
-        Record["_id"] = self.company_name
+        Record["_id"] = self.ID
+        Record["company_name"] = self.company_name
         Record["Compnay_url"] = self.company_url
         Record["Glassdoor"]=self.Glassdoor_func()
         Record["Linkedin"]=self.Likedin_obj.LinkedIn_func(self.local_config.cookie_path, self.company_name,self.company_url)
@@ -74,7 +74,7 @@ class context():
 
         return Record
 
-    def Ditribute(self):
+    def Distribute(self):
         self.check()
         if 'error' in self.Data['Linkedin'].keys():
             return {"Error":'company not found on linkedin'}

@@ -23,10 +23,11 @@ class scrape_us():
         self.driver_path = self.local_config.WEBDRIVER_PATH 
         self.driver = webdriver.Chrome(self.driver_path,options=chrome_options)
         self.driver.maximize_window()
-        self.file = open('logs_us_census.txt', 'a')
+        self.file = open('logs/logs_us_census.txt', 'a')
         now = datetime.now()
         dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
         self.file.write('\nDate time  : {} .\n'.format(dt_string))
+        self.destination = '/home/celebal/Data/census_data/US/'
     
     def get_us_data(self):
         
@@ -131,10 +132,10 @@ class scrape_us():
             
             source = os.getcwd() + '/'
             #destination = os.getcwd() + '/census_data/'
-            destination = '/home/celebal/Data/census_data/US/'
+            
             files = ['median_age_by_sex.xlsx', 'median_household_income.xlsx','population_by_sex.xlsx']
             for f in files:
-                os.rename(source + f, destination + f)
+                os.rename(source + f, self.destination + f)
         except Exception as e:
             print(e)
             self.file.write('Ecxeption = {}.\n'.format(e))
@@ -148,63 +149,72 @@ class scrape_us():
 class clean_data():
     def __init__(self):
         self.cols = [i for i in range(1, 104) if i%2 !=0]
+        self.file = open('logs/logs_us_census.txt', 'a')
 
     def clean_median_household_income(self):
-        data = pd.read_excel('/home/celebal/Data/census_data/US/median_household_income.xlsx')
-        req_data = data.iloc[5:8]
-        req_data = req_data.iloc[:, self.cols]
-        new_header = req_data.iloc[0] #grab the first row for the header
-        req_data = req_data[1:] #take the data less the header row
-        req_data.columns = new_header #set the header row as the df header
-        req_data.drop(columns=['United States'], inplace = True)
-        median_hosehold_income = pd.DataFrame(req_data.loc[7, :])
-        abbreviations = []
-        for st in median_hosehold_income.index:
-            #print(state)
-            state = us.states.lookup(st)
-            abbreviations.append(state.abbr)
-        median_hosehold_income.index = abbreviations
-        m1 = median_hosehold_income[7].apply(lambda x: int(re.sub(',', '', x)))
-        pd.DataFrame(m1).reset_index().rename(columns = {'index':'state_code', 7 : 'median_income'}).to_csv('/home/celebal/Data/census_data/US/clean_data/median_income.csv')
-    
+        try:
+            data = pd.read_excel('/home/celebal/Data/census_data/US/median_household_income.xlsx')
+            req_data = data.iloc[5:8]
+            req_data = req_data.iloc[:, self.cols]
+            new_header = req_data.iloc[0] #grab the first row for the header
+            req_data = req_data[1:] #take the data less the header row
+            req_data.columns = new_header #set the header row as the df header
+            req_data.drop(columns=['United States'], inplace = True)
+            median_hosehold_income = pd.DataFrame(req_data.loc[7, :])
+            abbreviations = []
+            for st in median_hosehold_income.index:
+                state = us.states.lookup(st)
+                abbreviations.append(state.abbr)
+            median_hosehold_income.index = abbreviations
+            m1 = median_hosehold_income[7].apply(lambda x: int(re.sub(',', '', x)))
+            pd.DataFrame(m1).reset_index().rename(columns = {'index':'state_code', 7 : 'median_income'}).to_csv('/home/celebal/Data/census_data/US/clean_data/median_income.csv')
+        except Exception as e:
+            self.file.write('Exception in clean_median_household_income : {}'.format(e))
+
     def clean_meadian_age(self):
-        df = pd.read_excel('/home/celebal/Data/census_data/US/median_age_by_sex.xlsx')
-        req_data = df.iloc[5:11]
-        req_data = req_data.iloc[:,self.cols]
-        new_header = req_data.iloc[0]
-        req_data = req_data[1:]
-        req_data.columns = new_header 
-        req_data = req_data.loc[8]
-        req_data.drop(index = ['United States'], inplace = True)
-        abbreviations = []
-        for st in req_data.index:
-            #print(state)
-            state = us.states.lookup(st)
-            abbreviations.append(state.abbr)
-        req_data.index = abbreviations
-        req_data =req_data.astype('float32')
-        pd.DataFrame(req_data).reset_index().rename(columns={'index':'state_code', 8:'median_age'}).to_csv('/home/celebal/Data/census_data/US/clean_data/median_age.csv')
+        try:
+            df = pd.read_excel('/home/celebal/Data/census_data/US/median_age_by_sex.xlsx')
+            req_data = df.iloc[5:11]
+            req_data = req_data.iloc[:,self.cols]
+            new_header = req_data.iloc[0]
+            req_data = req_data[1:]
+            req_data.columns = new_header 
+            req_data = req_data.loc[8]
+            req_data.drop(index = ['United States'], inplace = True)
+            abbreviations = []
+            for st in req_data.index:
+                #print(state)
+                state = us.states.lookup(st)
+                abbreviations.append(state.abbr)
+            req_data.index = abbreviations
+            req_data =req_data.astype('float32')
+            pd.DataFrame(req_data).reset_index().rename(columns={'index':'state_code', 8:'median_age'}).to_csv('/home/celebal/Data/census_data/US/clean_data/median_age.csv')
+        except Exception as e:
+            self.file.write('Exception in clean_meadian_age : {}'.format(e))
 
 
     def clean_population(self):
-        df = pd.read_excel('/home/celebal/Data/census_data/US/population_by_sex.xlsx')
-        req_data= df.iloc[5:8,:]
-        req_data = req_data.iloc[:,self.cols]
-        new_header = req_data.iloc[0] 
-        req_data = req_data[1:] 
-        req_data.columns = new_header 
-        req_data = req_data.loc[7]
-        req_data.drop(index = ['United States'], inplace = True)
-        abbreviations = []
-        for st in req_data.index:
-            #print(st)
-            state = us.states.lookup(st)
-            abbreviations.append(state.abbr)
-        req_data.index = abbreviations
-        req_data = req_data.apply(lambda x : re.sub(',', '', x)).astype('int')
-        pd.DataFrame(req_data).reset_index().rename(columns = {'index':'state_code', 7:'population'}).to_csv('/home/celebal/Data/census_data/US/clean_data/population.csv')
-    
+        try:
+            df = pd.read_excel('/home/celebal/Data/census_data/US/population_by_sex.xlsx')
+            req_data= df.iloc[5:8,:]
+            req_data = req_data.iloc[:,self.cols]
+            new_header = req_data.iloc[0] 
+            req_data = req_data[1:] 
+            req_data.columns = new_header 
+            req_data = req_data.loc[7]
+            req_data.drop(index = ['United States'], inplace = True)
+            abbreviations = []
+            for st in req_data.index:
+                #print(st)
+                state = us.states.lookup(st)
+                abbreviations.append(state.abbr)
+            req_data.index = abbreviations
+            req_data = req_data.apply(lambda x : re.sub(',', '', x)).astype('int')
+            pd.DataFrame(req_data).reset_index().rename(columns = {'index':'state_code', 7:'population'}).to_csv('/home/celebal/Data/census_data/US/clean_data/population.csv')
+        except Exception as e:
+            self.file.write('Exception in clean_population : {}'.format(e))
     def clean_data(self):
         self.clean_median_household_income()
         self.clean_meadian_age()
         self.clean_population()
+        self.file.close()
