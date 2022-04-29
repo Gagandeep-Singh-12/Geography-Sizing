@@ -135,8 +135,8 @@ class Website():
             print('ConnectionError or Timeout', true_link)
             return 2, '',''
         except Exception as e:
-            print(link)
-            print(str(e)+ ' : ' +link)
+            #print(link)
+            #print(str(e)+ ' : ' +link)
             return 1,'',''
         return 0, soup,true_link
 

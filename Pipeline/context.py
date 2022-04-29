@@ -67,11 +67,11 @@ class context():
         Record = {}
         Record["_id"] = self.ID
         Record["company_name"] = self.company_name
-        Record["Compnay_url"] = self.company_url
+        Record["Company_url"] = self.company_url
         Record["Glassdoor"]=self.Glassdoor_func()
         Record["Linkedin"]=self.Likedin_obj.LinkedIn_func(self.local_config.cookie_path, self.company_name,self.company_url)
         Record["Website"]=self.Website_obj.complete_data({'company_url': self.company_url, 'company_name': self.company_name})
-
+        print(Record)
         return Record
 
     def Distribute(self):
