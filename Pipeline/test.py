@@ -16,21 +16,25 @@ uri = "mongodb://celebal:bZPUhXkQDcdWioAIiwECCdSEiZL3zmQ6bojzYjdiDxQlHhBgzKrJjiu
 client = pymongo.MongoClient(uri)
 mongo_data2 = client.get_database(name="geography_sizing").get_collection(name='company_data_with_id')
 cursor2 = mongo_data2.find({})
-
+ids = [14, 35, 161, 163, 261, 285, 289, 320, 376, 509, 526, 538, 559, 542]
 #try:
-for i in range(100):
+for i in range(500):
     start = time.time()
     company = df["CompanyName"].iloc[i]
     website = df["Website"].iloc[i]
     ID = int(df["CompanyId"].iloc[i])
-    obj = context.context(ID,company,website,100)
-    res = obj.Distribute()
-    
-    l.append(res)
-    end = time.time()
-    file = open('/home/celebal/Pipeline/logs/context.txt','a')
-    file.write('Time taken for {} company = {} min\n'.format(company,(end-start)/60))
-    pickle.dump(l, open('outputs/context_output.pkl', 'wb'))
+    if ID in ids:
+        obj = context.context(ID,company,website,100)
+        res = obj.Distribute()
+        print(company, '-----------', website)
+        print(res)
+        print()
+        
+        l.append(res)
+        end = time.time()
+        file = open('/home/celebal/Pipeline/logs/context.txt','a')
+        file.write('Time taken for {} company = {} min\n'.format(company,(end-start)/60))
+        pickle.dump(l, open('outputs/context_output.pkl', 'wb'))
 display.stop()
 
 '''

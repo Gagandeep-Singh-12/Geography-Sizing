@@ -27,3 +27,97 @@ AntiCancer Inc., Loc not found,https://www.glassdoor.co.in/Overview/Working-at-A
 Apexbio Technology LLC, Comapny Not found
 Aplastic Anemia and MDS International Foundation, Loc not found,https://www.glassdoor.co.in/Overview/Working-at-The-Aplastic-Anemia-and-MDS-International-Foundation-EI_IE1946213.11,63.htm
 Arraystar Inc., Loc not found,https://www.glassdoor.co.in/Overview/Working-at-Arraystar-EI_IE1407993.11,20.htm
+AVIVA Biosciences Corporation, Loc not found,https://www.glassdoor.co.in/Overview/Working-at-AVIVA-Biosciences-EI_IE20578.11,28.htm
+Halozyme Therapeutics, Message: 
+Stacktrace:
+#0 0x5625bd1d67d3 <unknown>
+#1 0x5625bcf32688 <unknown>
+#2 0x5625bcf68c21 <unknown>
+#3 0x5625bcf68de1 <unknown>
+#4 0x5625bcf9bd74 <unknown>
+#5 0x5625bcf866dd <unknown>
+#6 0x5625bcf99a0c <unknown>
+#7 0x5625bcf865a3 <unknown>
+#8 0x5625bcf5bddc <unknown>
+#9 0x5625bcf5cde5 <unknown>
+#10 0x5625bd20749d <unknown>
+#11 0x5625bd22060c <unknown>
+#12 0x5625bd209205 <unknown>
+#13 0x5625bd220ee5 <unknown>
+#14 0x5625bd1fd070 <unknown>
+#15 0x5625bd23c488 <unknown>
+#16 0x5625bd23c60c <unknown>
+#17 0x5625bd255c6d <unknown>
+#18 0x7fd7b341d609 <unknown>
+,https://www.glassdoor.co.in/member/home/index.htm, Seacrch company 
+NOF CORPORATION, Message: 
+Stacktrace:
+#0 0x55d1bc55f7d3 <unknown>
+#1 0x55d1bc2bb688 <unknown>
+#2 0x55d1bc2f1c21 <unknown>
+#3 0x55d1bc2f1de1 <unknown>
+#4 0x55d1bc324d74 <unknown>
+#5 0x55d1bc30f6dd <unknown>
+#6 0x55d1bc322a0c <unknown>
+#7 0x55d1bc30f5a3 <unknown>
+#8 0x55d1bc2e4ddc <unknown>
+#9 0x55d1bc2e5de5 <unknown>
+#10 0x55d1bc59049d <unknown>
+#11 0x55d1bc5a960c <unknown>
+#12 0x55d1bc592205 <unknown>
+#13 0x55d1bc5a9ee5 <unknown>
+#14 0x55d1bc586070 <unknown>
+#15 0x55d1bc5c5488 <unknown>
+#16 0x55d1bc5c560c <unknown>
+#17 0x55d1bc5dec6d <unknown>
+#18 0x7f1bda94a609 <unknown>
+,https://www.glassdoor.co.in/member/home/index.htm, Seacrch company 
+SCREEN Holdings Co.,Ltd., Loc not found,https://www.glassdoor.co.in/Overview/Working-at-Dainippon-Screen-EI_IE6948.11,27.htm
+Kinpo Electronics, Inc., Loc not found,https://www.glassdoor.co.in/Overview/Working-at-Kinpo-EI_IE41142.11,16.htm
+Medimaging integrated Solution Inc., Comapny Not found
+Nokia Corporation, Message: 
+Stacktrace:
+#0 0x5646f12a67d3 <unknown>
+#1 0x5646f1002688 <unknown>
+#2 0x5646f1038c21 <unknown>
+#3 0x5646f1038de1 <unknown>
+#4 0x5646f106bd74 <unknown>
+#5 0x5646f10566dd <unknown>
+#6 0x5646f1069a0c <unknown>
+#7 0x5646f10565a3 <unknown>
+#8 0x5646f102bddc <unknown>
+#9 0x5646f102cde5 <unknown>
+#10 0x5646f12d749d <unknown>
+#11 0x5646f12f060c <unknown>
+#12 0x5646f12d9205 <unknown>
+#13 0x5646f12f0ee5 <unknown>
+#14 0x5646f12cd070 <unknown>
+#15 0x5646f130c488 <unknown>
+#16 0x5646f130c60c <unknown>
+#17 0x5646f1325c6d <unknown>
+#18 0x7f68411ec609 <unknown>
+,https://www.glassdoor.co.in/member/home/index.htm, Seacrch company 
+Emergent BioSolutions Inc., Message: 
+Stacktrace:
+#0 0x55914b2d77d3 <unknown>
+#1 0x55914b033688 <unknown>
+#2 0x55914b069c21 <unknown>
+#3 0x55914b069de1 <unknown>
+#4 0x55914b09cd74 <unknown>
+#5 0x55914b0876dd <unknown>
+#6 0x55914b09aa0c <unknown>
+#7 0x55914b0875a3 <unknown>
+#8 0x55914b05cddc <unknown>
+#9 0x55914b05dde5 <unknown>
+#10 0x55914b30849d <unknown>
+#11 0x55914b32160c <unknown>
+#12 0x55914b30a205 <unknown>
+#13 0x55914b321ee5 <unknown>
+#14 0x55914b2fe070 <unknown>
+#15 0x55914b33d488 <unknown>
+#16 0x55914b33d60c <unknown>
+#17 0x55914b356c6d <unknown>
+#18 0x7fce3ef28609 <unknown>
+,https://www.glassdoor.co.in/member/home/index.htm, Seacrch company 
+Simulations Plus, Inc., Loc not found,https://www.glassdoor.co.in/Overview/Working-at-Simulations-Plus-EI_IE7696.11,27.htm
+Simulations Plus, Inc., Loc not found,https://www.glassdoor.co.in/Overview/Working-at-Simulations-Plus-EI_IE7696.11,27.htm

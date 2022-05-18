@@ -35,7 +35,7 @@ class LinkedIn():
         self.company_website = company_website
         self.sales_data = None
         self.locations_data = None
-        self.headquarter = None
+        #self.headquarter = None
         self.error_dict = {}
         self.error_dict['company_name'] = self.company_name
         self.error_dict['company_website'] = self.company_website
@@ -68,6 +68,9 @@ class LinkedIn():
     def get_results(self):
         print("company : {}  & company_website : {}".format(self.company_name, self.company_website))
         file = open("logs/scraper_log_cookie_celebal.txt", "a")
+        now = datetime.datetime.now()
+        dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+        file.write('\nDate time  : {} .\n'.format(dt_string))
         file.write("company : {}  & company_website : {}".format(self.company_name, self.company_website))
         file.write("\n")
         self.load_cookies()
@@ -219,44 +222,10 @@ class LinkedIn():
                     with open('locations_content.txt','w') as lc:
                         lc.write(line)
                     break
-                
-    def find_locations(self, content):
-   
-        with open(content, 'r') as f:
-            d = f.read()
-        res = json.loads(d)
-        #locations => keys-country, values = city
-        locations = {}
-        headquarter_loc = {}
-        
-        for item in res['included']:
-            if 'confirmedLocations' in item.keys():
-                #print(len(item['confirmedLocations']))
-                for loc_dict in item['confirmedLocations']:      
-                    try:
-                        if loc_dict['city']:
-                            city = loc_dict['city']
-                    except:
-                        city = np.NaN
-                        
-                    if loc_dict['headquarter']:
-                        headquarter_loc['country'] = loc_dict['country']
-                        headquarter_loc['city'] = city
-                    #data about locations where headquarter = false        
-                    if loc_dict['country'] in locations.keys():
-        
-                        locations[loc_dict['country']].append(city)
-                    else:
-                        locations[loc_dict['country']] = []
-                        locations[loc_dict['country']].append(city)
-                break
-            
-        if len(locations) == 0:
-            self.error_dict['locations'] = True
-            
-        return locations, headquarter_loc 
     
-    def find_locations2(self,content):
+    
+    
+    def find_locations(self,content):
    
         with open(content, 'r') as f:
             d = f.read()
@@ -312,7 +281,47 @@ class LinkedIn():
             #print('finding locations in data key')
             self.error_dict['data_error2'] = True
              
-        return locations, headquarter_loc
+        return locations
+
+    def find_locations2(self):
+            c = 0
+            with open('content.txt') as f1:
+                for line in f1.readlines():
+                    if (line.find("groupedLocations")!=-1):
+                        if c == 0:
+                            with open('locations_content.txt','w') as lc:
+                                lc.write(line)
+                                
+                        else:
+                            with open('locations_content1.txt','w') as lc:
+                                lc.write(line)
+                        c += 1
+
+                    
+            with open('locations_content1.txt', 'r') as f1:
+                d = f1.read()
+            import json
+            res = json.loads(d)
+            
+            locations = {}
+            for item in res['included']:
+                if 'groupedLocations' in item.keys():
+                    for i in item['groupedLocations']:
+                        #print(i['locations'][0]['address'],'\n\n')
+                        req_data = i['locations'][0]['address']
+                        try:
+                            if req_data['city']:
+                                city = req_data['city']
+                        except:
+                            city =np.NaN
+                        if req_data['country'] in locations.keys():
+
+                            locations[req_data['country']].append(city)
+                        else:
+                            locations[req_data['country']] = []
+                            locations[req_data['country']].append(city)
+                            
+            return locations
     
     def get_sales_data(self):
         try:
@@ -465,7 +474,7 @@ class LinkedIn():
                     #but if we visit it, there is a match 
                     #eg.=>company_website=https://4sight.cloud/about & linkedin = http://www.4sightholdings.com
                     else:
-                        self.driver2 = self.driver = webdriver.Chrome(self.local_config.WEBDRIVER_PATH,options=chrome_options)
+                        self.driver2 = webdriver.Chrome(self.local_config.WEBDRIVER_PATH,options=chrome_options)
                         time.sleep(random.randint(min_, max_))
                         self.driver2.get(website)
                         time.sleep(random.randint(min_, max_))
@@ -521,9 +530,16 @@ class LinkedIn():
     def scraper(self, company_link):
         try:
             #getting locations data
-            locations, headquarter_loc  = self.find_locations2('locations_content.txt')
+            try:
+                locations  = self.find_locations('locations_content.txt')
+            except:
+                print('find_locations() error')
+                file = open("logs/scraper_log_cookie_celebal.txt", "a")
+                file.write("find_locations() error\n")
+                locations = self.find_locations2()
+
             self.locations_data = locations
-            self.headquarter = headquarter_loc
+            #self.headquarter = headquarter_loc
             ##Random 
             time.sleep(random.randint(min_, max_))
             ##
@@ -538,6 +554,7 @@ class LinkedIn():
             file.write("Error inside scarper\n")
             print('error inside scraper')
             self.error_dict['scraper_error'] = True
+            print('\n\n',self.error_dict)
 
 import CountryGrouping
 class format_LinkedIn():

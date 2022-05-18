@@ -167,3 +167,86 @@ current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
 linkedinurl after adding cookie -> https://www.linkedin.com/feed/
 company : ATCC  & company_website : https://www.atcc.org
 current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+company : AVIVA Biosciences Corporation  & company_website : https://www.avivabio.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+company : ATCC  & company_website : https://www.atcc.org
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+company : ATCC  & company_website : https://www.atcc.org
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+company : ATCC  & company_website : https://www.atcc.org
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Error inside scarper
+company : GSK  & company_website : https://www.gsk.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Error inside scarper
+company : Halozyme Therapeutics  & company_website : https://www.halozyme.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+company : NOF CORPORATION  & company_website : https://www.nof.co.jp
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Error inside scarper
+company : Personalis, Inc.  & company_website : https://www.personalis.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Error inside scarper
+company : PolyPeptide Group  & company_website : https://www.polypeptide.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+company : SCREEN Holdings Co.,Ltd.  & company_website : https://www.screen.co.jp
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Error inside scarper
+company : Wiley  & company_website : https://www.wiley.com/en-us
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+company : Kinpo Electronics, Inc.  & company_website : https://www.kinpo.com.tw
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+company : Medimaging integrated Solution Inc.  & company_website : https://www.miis.com.tw
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Error inside scarper
+company : MobileSmith, Inc.  & company_website : https://www.mobilesmith.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Error inside scarper
+company : Nokia Corporation  & company_website : https://www.nokia.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Error inside scarper
+company : ProAssurance Corporation  & company_website : https://www.proassurance.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Error inside scarper
+company : 908 Devices Inc.  & company_website : https://www.908devices.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Error inside scarper
+company : Emergent BioSolutions Inc.  & company_website : https://www.emergentbiosolutions.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Error inside scarper
+company : Emergent BioSolutions Inc.  & company_website : https://www.emergentbiosolutions.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Error inside scarper
+company : Emergent BioSolutions Inc.  & company_website : https://www.emergentbiosolutions.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+company : Emergent BioSolutions Inc.  & company_website : https://www.emergentbiosolutions.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+company : Emergent BioSolutions Inc.  & company_website : https://www.emergentbiosolutions.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+company : Simulations Plus, Inc.  & company_website : https://www.simulations-plus.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl

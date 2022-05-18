@@ -70,9 +70,17 @@ class context():
         Record["Company_url"] = self.company_url
         Record["Glassdoor"]=self.Glassdoor_func()
         Record["Linkedin"]=self.Likedin_obj.LinkedIn_func(self.local_config.cookie_path, self.company_name,self.company_url)
-        Record["Website"]=self.Website_obj.complete_data({'company_url': self.company_url, 'company_name': self.company_name})
-        print(Record)
+        Record["Website"]= self.website_pruning(self.Website_obj.complete_data({'company_url': self.company_url, 'company_name': self.company_name}))
+        file = open('logs/record_error.txt','w')
+        file.write('{}'.format(Record))
+        #print(Record)
         return Record
+
+    def website_pruning(self, website_data):
+        required_data = {}
+        required_data["web_data"] = list(set(website_data["web_data"]))
+        return required_data
+
 
     def Distribute(self):
         self.check()

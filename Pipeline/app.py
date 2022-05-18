@@ -34,8 +34,14 @@ def testpost():
                         )
           print("inside api : ",response)
           print("inside api : ",response.text)
+          #time.sleep(60)
           start = time.time()
           while status == False:
+               end = time.time()
+               if (end-start) > 150:
+                    print('Time exceeded')
+                    return jsonify({"Error": "Time exceeded"})
+                    #break
                pass
           end = time.time()
           print("Time taken for status to become True : ",(end-start), "seconds")
@@ -48,8 +54,11 @@ def testpost():
                status, revenue = False, None
                return jsonify({"Error": "Revenue Not Found"})
           #default value for revenue is taken to be $100, this would be provided by model from anjali ma'am
-          obj = context.context(input_json["company_name"],input_json["company_website"],revenue)
-          dictToReturn = obj.Ditribute()
+          #r = revenue
+          #status, revenue = False,None##test
+          #return jsonify({'revenue': r})##test
+          obj = context.context(input_json['id'],input_json["company_name"],input_json["company_website"],revenue)
+          dictToReturn = obj.Distribute()
           #print(dictToReturn)
           display.stop()
           status, revenue = False,None
