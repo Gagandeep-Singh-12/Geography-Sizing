@@ -14,7 +14,8 @@ def home():
      return "Flask"
 
 #gloabl variables
-url1 = 'http://52.146.41.91:2020/geography_revenue'
+url1 = 'http://20.25.81.60:3030/geography_revenue'
+
 global revenue, status, error
 revenue = None
 status = False

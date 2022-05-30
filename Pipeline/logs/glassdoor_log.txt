@@ -121,3 +121,5 @@ Stacktrace:
 ,https://www.glassdoor.co.in/member/home/index.htm, Seacrch company 
 Simulations Plus, Inc., Loc not found,https://www.glassdoor.co.in/Overview/Working-at-Simulations-Plus-EI_IE7696.11,27.htm
 Simulations Plus, Inc., Loc not found,https://www.glassdoor.co.in/Overview/Working-at-Simulations-Plus-EI_IE7696.11,27.htm
+Atlas Antibodies AB, Loc not found,https://www.glassdoor.co.in/Overview/Working-at-Atlas-Antibodies-EI_IE2993273.11,27.htm
+Atlas Antibodies AB, Loc not found,https://www.glassdoor.co.in/Overview/Working-at-Atlas-Antibodies-EI_IE2993273.11,27.htm

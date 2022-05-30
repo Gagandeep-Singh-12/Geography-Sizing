@@ -23,7 +23,7 @@ for i in range(708):
                                         }
 
                                 )
-
+        print(response.status_code, type(response.status_code))
         #result = json.loads(response.text)
 
         #print(result) 

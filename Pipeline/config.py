@@ -1,4 +1,3 @@
-
 class Local_config():
     def __init__(self):
         self.GROUPED_DATA_PATH = '/home/celebal/Data/grouped_countries1.pkl'
@@ -11,6 +10,7 @@ class Local_config():
         self.revenue_file_path = '/home/celebal/Pipeline/util_files/revenue.json'
         self.cookie_folder = '/home/celebal/Data/cookies'
 
+
 class Constant_config():
     def __init__(self):
         # Threshold for fuzzy logic
@@ -22,5 +22,14 @@ class Azure_config():
     def __init__(self):
         self.COSMOS_CONNECTION = "mongodb://celebal:bZPUhXkQDcdWioAIiwECCdSEiZL3zmQ6bojzYjdiDxQlHhBgzKrJjiuYCWtEbSB4QcinajhByNwKbWlsRoBQ0A==@celebal.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@celebal@"
         self.DB_NAME = "geography_sizing"
-        self.COLLECTION_NAME = "company_data_with_id"
+        self.COLLECTION_NAME = "Final_Results"
         self.COLLECTION_NAME_CENSUS = "census_US"
+        self.COLLECTION_NAME_REVENUE = "revenue_leaf_sizing"
+
+        '''
+        import pymongo
+        uri = "mongodb://celebal:bZPUhXkQDcdWioAIiwECCdSEiZL3zmQ6bojzYjdiDxQlHhBgzKrJjiuYCWtEbSB4QcinajhByNwKbWlsRoBQ0A==@celebal.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@celebal@"
+        client = pymongo.MongoClient(uri)
+        mongo_data = client.get_database(name="geography_sizing").get_collection(name='Final_Results')
+        self.FLASK_CURSOR = mongo_data.find({})
+        '''

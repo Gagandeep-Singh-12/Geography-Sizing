@@ -250,3 +250,15 @@ linkedinurl after adding cookie -> https://www.linkedin.com/feed/
 find_locations() error
 company : Simulations Plus, Inc.  & company_website : https://www.simulations-plus.com
 current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 26/05/2022 12:10:11 .
+company : Atlas Antibodies AB  & company_website : https://www.atlasantibodies.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 27/05/2022 07:27:14 .
+company : Atlas Antibodies AB  & company_website : https://www.atlasantibodies.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl

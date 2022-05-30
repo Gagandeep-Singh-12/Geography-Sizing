@@ -51,7 +51,8 @@ class context():
             c=[]
             for i in self.Glassdoor_obj.locations_data:
                 city, country = i.split(", ")
-                if len(country) == 2 and us.states.lookup(country) != None:
+                lookup_result = us.states.lookup(country)
+                if len(country) == 2 and lookup_result != None:
                     if "us" in list(locations.keys()):
                         locations["us"].append(country)
                     else:
@@ -83,12 +84,17 @@ class context():
 
 
     def Distribute(self):
-        self.check()
+
+        #self.check()
+        self.Data = self.Scraper()
         if 'error' in self.Data['Linkedin'].keys():
-            return {"Error":'company not found on linkedin'}
+            self.Data["output"] = {"Error":'company not found on linkedin'}
         elif self.Data['Linkedin']['sales_data'] == None:
-            return {"Error":'Sales data not available'}
+            self.Data["output"] =  {"Error":'Sales data not available'}
 
         else:
             Country_Dist,State_Dist = self.Model.Distribute(self.Data['Linkedin']['sales_data'], self.Data['Linkedin']['locations_data'], self.Data['Glassdoor'],self.Data['Website'],self.Revenue)
-            return {"Country":Country_Dist,"State":State_Dist}
+            self.Data["output"] =  {"Country":Country_Dist,"State":State_Dist}
+        #self.Insert_Cosmos()
+
+        
