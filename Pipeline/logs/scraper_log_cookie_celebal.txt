@@ -262,3 +262,144 @@ find_locations() error
 Date time  : 27/05/2022 07:27:14 .
 company : Atlas Antibodies AB  & company_website : https://www.atlasantibodies.com
 current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 30/05/2022 12:02:26 .
+company : Boehringer Ingelheim Pharmaceuticals, Inc.  & company_website : https://www.boehringer-ingelheim.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 30/05/2022 12:15:26 .
+company : Boehringer Ingelheim Pharmaceuticals, Inc.  & company_website : https://www.boehringer-ingelheim.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 30/05/2022 12:35:09 .
+company : ABS Inc.  & company_website : https://www.absbio.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 06:50:21 .
+company : ABS Inc.  & company_website : https://www.absbio.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 07:49:23 .
+company : ACROBiosystems  & company_website : https://www.acrobiosystems.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 08:05:05 .
+company : ABS Inc.  & company_website : https://www.absbio.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 08:27:03 .
+company : ACROBiosystems  & company_website : https://www.acrobiosystems.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 08:34:01 .
+company : Boehringer Ingelheim Pharmaceuticals, Inc.  & company_website : https://www.boehringer-ingelheim.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 10:03:29 .
+company : ABS Inc.  & company_website : https://www.absbio.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 10:23:14 .
+company : ACROBiosystems  & company_website : https://www.acrobiosystems.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 10:29:55 .
+company : Boehringer Ingelheim Pharmaceuticals, Inc.  & company_website : https://www.boehringer-ingelheim.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 11:08:48 .
+company : 3DHISTECH  & company_website : https://www.3dhistech.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Time out at sales filter
+find_locations() error
+
+Date time  : 31/05/2022 11:16:22 .
+company : AACR Publications  & company_website : https://www.aacr.org
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Time out at sales filter
+find_locations() error
+
+Date time  : 31/05/2022 11:27:50 .
+company : AACRcentral  & company_website : https://www.aacr.org
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 11:39:34 .
+company : AbboMax, Inc.  & company_website : https://www.abbomax.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 11:50:39 .
+company : ABS Inc.  & company_website : https://www.absbio.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 12:11:55 .
+company : ACROBiosystems  & company_website : https://www.acrobiosystems.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 12:19:44 .
+company : ACT Genomics Co., Ltd.  & company_website : https://www.actgenomics.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Time out at sales filter
+find_locations() error
+
+Date time  : 31/05/2022 12:26:26 .
+company : Adaptimmune  & company_website : https://www.adaptimmune.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 12:43:51 .
+company : ANGLE plc  & company_website : https://angleplc.com/
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 13:04:44 .
+company : Berkeley Lights, Inc.  & company_website : https://www.berkeleylights.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 13:21:13 .
+company : Bio‐techne  & company_website : https://www.bio-techne.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 31/05/2022 13:32:25 .
+company : Caliber I.D.  & company_website : https://www.caliberid.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl

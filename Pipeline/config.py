@@ -22,9 +22,11 @@ class Azure_config():
     def __init__(self):
         self.COSMOS_CONNECTION = "mongodb://celebal:bZPUhXkQDcdWioAIiwECCdSEiZL3zmQ6bojzYjdiDxQlHhBgzKrJjiuYCWtEbSB4QcinajhByNwKbWlsRoBQ0A==@celebal.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@celebal@"
         self.DB_NAME = "geography_sizing"
-        self.COLLECTION_NAME = "Final_Results"
+        self.COLLECTION_NAME = "company_data_with_id"
         self.COLLECTION_NAME_CENSUS = "census_US"
         self.COLLECTION_NAME_REVENUE = "revenue_leaf_sizing"
+        #self.COLLECTION_COMPANY_DATA_WITH_ID = ""
+        
 
         '''
         import pymongo

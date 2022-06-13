@@ -25,7 +25,7 @@ class context():
         self.Model = Heuristic_model.Model(self.azure_config.COSMOS_CONNECTION,self.azure_config.DB_NAME,self.azure_config.COLLECTION_NAME_CENSUS)
         self.client = pymongo.MongoClient(self.azure_config.COSMOS_CONNECTION)
         self.mongo_data1 = self.client.get_database(name=self.azure_config.DB_NAME).get_collection(name=self.azure_config.COLLECTION_NAME)
-
+        self.Data_out = {}
 
     def Insert_Cosmos(self):
         self.mongo_data1.insert_one(self.Data)
@@ -88,13 +88,13 @@ class context():
         #self.check()
         self.Data = self.Scraper()
         if 'error' in self.Data['Linkedin'].keys():
-            self.Data["output"] = {"Error":'company not found on linkedin'}
+            self.Data_out["output"] = {"Error":'company not found on linkedin'}
         elif self.Data['Linkedin']['sales_data'] == None:
-            self.Data["output"] =  {"Error":'Sales data not available'}
+            self.Data_out["output"] =  {"Error":'Sales data not available'}
 
         else:
             Country_Dist,State_Dist = self.Model.Distribute(self.Data['Linkedin']['sales_data'], self.Data['Linkedin']['locations_data'], self.Data['Glassdoor'],self.Data['Website'],self.Revenue)
-            self.Data["output"] =  {"Country":Country_Dist,"State":State_Dist}
+            self.Data_out["output"] =  {"Country":Country_Dist,"State":State_Dist}
         #self.Insert_Cosmos()
 
         

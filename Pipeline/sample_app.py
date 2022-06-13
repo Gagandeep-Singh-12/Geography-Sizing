@@ -8,7 +8,6 @@ from utils import validate_json
 import pymongo
 import config
 
-local = config.Local_config()
 app = Flask(__name__)
 CORS(app)
 

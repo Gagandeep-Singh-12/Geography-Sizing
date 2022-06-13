@@ -78,3 +78,4 @@
 {'https://www.amsbio.com': set()}
 {'https://www.abmgood.com': set()}
 {'https://biophysics.com': set()}
+{'https://www.caliberid.com': {'https://www.caliberid.com/research.html', 'https://www.caliberid.com/clinical.html'}}
