@@ -25,7 +25,7 @@ def check_final_results(id):
         if doc['_id'] == id:
             return True
     return False
-#print(check_final_results(8876))
+
 ids, companies, websites = [], [], []
 for doc in company_data_with_id.find({}):
     ids.append(doc['_id'])
@@ -34,27 +34,18 @@ for doc in company_data_with_id.find({}):
 
 
 #for doc in company_data_with_id.find({},no_cursor_timeout=True):
-for i in range(100):
+for i in range(100,110):
     #collection
     uri = "mongodb://celebal:bZPUhXkQDcdWioAIiwECCdSEiZL3zmQ6bojzYjdiDxQlHhBgzKrJjiuYCWtEbSB4QcinajhByNwKbWlsRoBQ0A==@celebal.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@celebal@"
     client = pymongo.MongoClient(uri)
 
     company_data_with_id = client.get_database(name="geography_sizing").get_collection(name='company_data_with_id')
     revenue_data = client.get_database(name="geography_sizing").get_collection(name = 'revenue_leaf_sizing')
-    #company_data_with_id = client.get_database(name="geography_sizing").get_collection(name = 'company_data_with_id')
     final_results =  client.get_database(name="geography_sizing").get_collection(name = 'Final_Results')
 
-    #company = doc["company_name"]
-    #website = doc['Company_url']
-    #ID = doc['_id']
     ID,  company, website= ids[i], companies[i], websites[i]
-
-
-    #if ID not in  [7,85,11]:
-    #    continue
     file.write('\nID : {}'.format(ID))
-
-    response = requests.post('http://20.25.81.60:3030/geography_revenue',#timeout=180,
+    response = requests.post('http://20.25.81.60:2020/geography_revenue',#timeout=180,
 
                 json={
 
@@ -73,6 +64,13 @@ for i in range(100):
 #print(type(result["revenue"]))
     print(response.text)
     if response.status_code == 200:
+        #if company is new
+        if not check_final_results(ID):
+            rec_progress = {'_id': ID, 'CompanyName': company, 'Website': website, 'output': {"output": "Data collection and revenue distribution in progress"}}
+            final_results.insert_one(rec_progress)
+            rec = {'_id': ID, 'CompanyName': company, 'Website': website, "Linkedin" : "", "Glassdoor" : "", "Website" : ""}
+            company_data_with_id.insert_one(rec)
+
         result = json.loads(response.text)
         rev=result["revenue"]
         rec = {'_id': ID, 'CompanyName': company, 'Website': website, 'revenue':rev}
@@ -81,10 +79,10 @@ for i in range(100):
         new_scraping_values = {"$set": obj.Data}
         company_data_with_id.update_one({"_id":ID}, new_scraping_values)
         rec_final = {'_id': ID, 'CompanyName': company, 'Website': website, 'output': obj.Data_out}
+
         if check_final_results(ID):
             new_values = {"$set": rec_final}
             final_results.update_one({"_id":ID}, new_values )
-
         else:
             final_results.insert_one(rec_final)
         
@@ -103,6 +101,15 @@ for i in range(100):
             revenue_data.update_one(query,new_values)
         else:
             revenue_data.insert_one(rec)
+
+        rec = {'_id': ID, 'CompanyName': company, 'Website': website, 'output': {"output": {"Error" :"Revenue Not Found"}}}
+        if check_final_results(ID):
+            query = {"_id":ID}
+            new_values = {"$set": rec}
+            final_results.update_one(query,new_values)
+        else:
+            final_results.insert_one(rec)
+
         
 file.close()
 display.stop()

@@ -403,3 +403,9 @@ find_locations() error
 Date time  : 31/05/2022 13:32:25 .
 company : Caliber I.D.  & company_website : https://www.caliberid.com
 current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 13/06/2022 09:38:13 .
+company : Eurofins Pharma Discovery Services  & company_website : https://www.eurofins.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
