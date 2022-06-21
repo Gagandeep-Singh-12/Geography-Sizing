@@ -177,3 +177,5 @@ ACT Genomics Co., Ltd., Loc not found,https://www.glassdoor.co.in/Overview/Worki
 ANGLE plc, Loc not found,https://www.glassdoor.co.in/Overview/Working-at-ANGLE-EI_IE35426.11,16.htm
 Caliber I.D., Loc not found,https://www.glassdoor.co.in/Overview/Working-at-Caliber-Imaging-and-Diagnostics-EI_IE1850096.11,42.htm
 Eurofins Pharma Discovery Services, Comapny Not found
+Fine Science Tools, Loc not found,https://www.glassdoor.co.in/Overview/Working-at-Fine-Science-Tools-EI_IE1601780.11,29.htm
+Focus Biomolecules, Comapny Not found

@@ -44,12 +44,6 @@ for i in range(100,110):
     final_results =  client.get_database(name="geography_sizing").get_collection(name = 'Final_Results')
 
     ID,  company, website= ids[i], companies[i], websites[i]
-    if not check_final_results(ID):
-            rec_progress = {'_id': ID, 'CompanyName': company, 'Website': website, 'output': {"output": "Data collection and revenue distribution in progress"}}
-            final_results.insert_one(rec_progress)
-            rec = {'_id': ID, 'CompanyName': company, 'Website': website, "Linkedin" : "", "Glassdoor" : "", "Website" : ""}
-            company_data_with_id.insert_one(rec)
-            
     file.write('\nID : {}'.format(ID))
     response = requests.post('http://20.25.81.60:2020/geography_revenue',#timeout=180,
 
@@ -66,13 +60,8 @@ for i in range(100,110):
                 )
     file.write('\tResponse: {}  & Response status : '.format(response, response.status_code))
 
-
-#print(type(result["revenue"]))
     print(response.text)
     if response.status_code == 200:
-        #if company is new
-        
-
         result = json.loads(response.text)
         rev=result["revenue"]
         rec = {'_id': ID, 'CompanyName': company, 'Website': website, 'revenue':rev}

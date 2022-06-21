@@ -409,3 +409,46 @@ find_locations() error
 Date time  : 13/06/2022 09:38:13 .
 company : Eurofins Pharma Discovery Services  & company_website : https://www.eurofins.com
 current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 13/06/2022 12:06:21 .
+company : Eurofins Pharma Discovery Services  & company_website : https://www.eurofins.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Time out at sales filter
+find_locations() error
+
+Date time  : 13/06/2022 12:38:56 .
+company : European Association for Cancer Research  & company_website : https://www.eacr.org/
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 13/06/2022 12:48:46 .
+company : Fine Science Tools  & company_website : http://www.finescience.com/Home.aspx
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+Time out at sales filter
+find_locations() error
+
+Date time  : 13/06/2022 12:56:15 .
+company : FLAGSHIP BIOSCIENCES  & company_website : https://www.flagshipbio.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+
+Date time  : 13/06/2022 13:04:39 .
+company : FlowMetric, Inc.  & company_website : https://www.flowcytometryservices.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 13/06/2022 13:12:47 .
+company : Fluidigm Corporation  & company_website : https://www.fluidigm.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
+linkedinurl after adding cookie -> https://www.linkedin.com/feed/
+find_locations() error
+
+Date time  : 13/06/2022 13:22:11 .
+company : Focus Biomolecules  & company_website : https://www.focusbiomolecules.com
+current cookie : /home/celebal/Data/cookies/cookies_activity.pkl
